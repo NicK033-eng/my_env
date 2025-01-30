@@ -53,9 +53,9 @@ if x_obs >= meanx:
 if x_obs <= meanx:
     pr_value = meany - R * standnorm * stdy
 
-#poly1d_fn is now a Residual Plot for underline difference between observed and predicted
-coef = np.polyfit(x,y,R)
-poly1d_fn = np.poly1d(coef) 
+#np.poly_b_1d is now a Residual Plot for underline difference between observed and predicted
+coef = np.polyfit_b(x,y,R)
+poly2d_fn = np.poly_b_1d(coef) 
 
 
 print(pr_value)
