@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-#df lists 
+#data input
 x = [1,2,3,4,76,83,22,90,97,99,39,37,21]
 y = [3,5,7,10,34,89,83,91,94,83,24,33,12]
 
@@ -10,7 +10,7 @@ y = [3,5,7,10,34,89,83,91,94,83,24,33,12]
 array_xy = np.array([x, y])
 
 #poly1d_fn is now a function which takes in x and returns an estimate for y
-coef = np.polyfit(x,y,1)
+coef = np.polyfit(x,y,1) #for Residual use R instead of 1
 poly1d_fn = np.poly1d(coef) 
 
 #'--k'=black dashed line, 'yo' = yellow circle marker
@@ -52,10 +52,6 @@ if x_obs >= meanx:
     pr_value = meany + R * standnorm * stdy
 if x_obs <= meanx:
     pr_value = meany - R * standnorm * stdy
-
-#np.poly_b_1d is now a Residual Plot for underline difference between observed and predicted
-coef = np.polyfit_b(x,y,R)
-poly2d_fn = np.poly_b_1d(coef) 
 
 
 print(pr_value)
