@@ -19,7 +19,6 @@ plt.plot(x,y, 'yo', x, poly1d_fn(x), '--k')
 # plot regression
 plt.xlim(0, 100)
 plt.ylim(0, 100)
-plt.show()
 
 # the means (rows)
 meanx = np.mean(array_xy[0])
@@ -41,13 +40,23 @@ R=R1[1,0]
 # set driver value
 x_obs = 50
 
-standnorm = x_obs - meanx
+# standardize for both above or below
+if x_obs >= meanx:
+    standnorm = x_obs - meanx
+if x_obs <= meanx:
+    standnorm = meanx - x_obs
+
 standnorm = standnorm / stdx
-print (standnorm)
 
 if x_obs >= meanx:
     pr_value = meany + R * standnorm * stdy
 if x_obs <= meanx:
     pr_value = meany - R * standnorm * stdy
 
+#poly1d_fn is now a Residual Plot for underline difference between observed and predicted
+coef = np.polyfit(x,y,R)
+poly1d_fn = np.poly1d(coef) 
+
+
 print(pr_value)
+print(R)
